@@ -134,7 +134,7 @@ def random_policy(_grid):
 
     return policy
 
-def value_iteration(crit, max_iter, u_grid, beta):
+def value_iteration(max_iter, u_grid, beta, crit):
     """
     Solve the optimization problem by value iteration.
 
@@ -204,7 +204,7 @@ def policy_iteration(max_iter, u_grid, beta):
 
     return value_store_iter, store_policy, num_iter
 
-def modified_policy_iteration(crit, k, max_iter, u_grid, beta, ):
+def modified_policy_iteration(max_iter, u_grid, beta, crit, k):
     """
     Solve the optimization problem by policy iteration
 
