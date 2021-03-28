@@ -6,7 +6,6 @@ from codes.ddp_functions import crra
 from codes.ddp_functions import capital_ss
 from codes.ddp_functions import linearized_dynamic_system
 
-
 @jit
 def consum_grid_mat(k_grid,alpha,delta):
     """
@@ -43,7 +42,6 @@ def get_grid(dev, num_states, beta, alpha, delta, sigma):
     u_grid = crra(c_grid, sigma)
 
     return k_grid, c_grid, u_grid
-
 
 def _consumption_linear_solution(k_grid, alpha, beta, delta, sigma):
     """
