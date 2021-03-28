@@ -2,20 +2,20 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import random
 
-def _plot_dynamics(d1_grid, value_grid, iter, lines, colormap):
+def _plot_dynamics(d1_grid, value_grid, iter, nlines, colormap):
     """
-    Choosing randomly 
+    Choosing randomly n-lines in grid to plot
 
     Parameters
     ----------
     d1_grid : vector, of length n (ndim=1)
-            grid in the x axis
+        grid in the x axis
 
     value_grid: array_like( 2-dimensional ndarray)
-            grid in the x axis
+        grid in the y axis
 
-    lines: interger
-            the number of lines will be plotted
+    nlines: interger
+        the number of lines plotted
     
     Return
     ---------
@@ -37,12 +37,12 @@ def _plot_dynamics(d1_grid, value_grid, iter, lines, colormap):
     sm = mpl.cm.ScalarMappable(norm=norm, cmap=cmap)
     sm.set_array([])
 
-    for j in range(lines+1):
+    for j in range(nlines+1):
         y = value_grid[iter_vector[j],:]
         plt.plot(x, y, linewidth=2, alpha=0.6, color=cmap(norm(iter_vector[j])), label=iter_vector[j])
 
 def plot_value_iteration(k_grid, val_store_iter, num_iter,lines):
-    "Plot the value function "
+    "Plot the value function for value iteration method"
 
     _plot_dynamics(k_grid, val_store_iter, num_iter, lines, colormap = 'Paired')
    
@@ -62,7 +62,7 @@ def plot_transition_dynamics(T, k_sim, num_iter, lines):
     plt.show()
 
 def plot_policy_iteration(k_grid, val_store_iter, num_iter):
-    "Plot the value function for policy iteration "
+    "Plot the value function for policy iteration method "
 
     #Iteration vector
     iter_vector = range(0,num_iter)
@@ -91,7 +91,7 @@ def plot_policy_iteration(k_grid, val_store_iter, num_iter):
     
 def plot_capital_current_utility(u_grid, k_grid):
     """
-    plot two random utility lines in relation with capital stock k_t
+    Plot two random utility lines in relation with capital stock k_t
     and the choice of next capital stock k_t+1
 
     """
