@@ -1,0 +1,11 @@
+{
+        "python.testing.pytestArgs": [
+            "."
+        ],
+    "python.pythonPath": "C:\\Users\\msduo\\.conda\\envs\\dsge\\python.exe",
+    "python.terminal.activateEnvironment": true,
+    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true
+}

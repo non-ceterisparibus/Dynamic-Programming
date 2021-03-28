@@ -1,0 +1,24 @@
+name: dsge
+channels:
+  - conda-forge
+
+dependencies:
+  - conda-build
+  - ipykernel
+  - jupyterlab
+  - matplotlib
+  - scipy
+  - pandas
+  - pip
+  - numba
+  - numpy
+  - seaborn 
+
+  - pytest
+  - pytest-cov
+  - python=3.8
+  - python-graphviz
+
+  - virtualenv=20.0.33
+
+
