@@ -4,10 +4,9 @@ import numpy as np
 
 def bellman_equation(u_grid, val_old, beta):
     """
-    The Bellman operator, which computes and returns the updated
-    value function `Tv` for a value function `v`.
-
-    return na position to 0 value
+    Computes and returns the updated
+    value function for an old value function `val_old`.
+    Return NA position to 0 value
 
     Parameters
     ----------
@@ -19,11 +18,10 @@ def bellman_equation(u_grid, val_old, beta):
 
     Returns
     -------
-    v : array_like( 2-dimensional ndarray of shape (n, n))
+    v_new : array_like( 2-dimensional ndarray of shape (n, n))
         Updated utility value grid
 
     """
-
     v = u_grid + beta*val_old[:,None]
 
     v_new = np.where(np.isnan(u_grid), 0, v)
@@ -32,11 +30,11 @@ def bellman_equation(u_grid, val_old, beta):
 
 def state_wise_max(u_grid):
     """
-    Given utility grid with certain reward
+    Find the maximum value function and the corresponding policy
     
     Parameters
     ----------
-    u : array_like( 2-dimensional ndarray of shape (n, n))
+    u_grid : array_like( 2-dimensional ndarray of shape (n, n))
             Utility grid
 
     Returns
@@ -99,7 +97,7 @@ def v_greedy(v, u_grid, beta):
     v : array_like(float, ndim=1)
         Value function vector, of length n.
 
-    policy : ndarray(int, ndim=1), optional(default=None)
+    policy : ndarray(int, ndim=1)
         Optional output array for `sigma`.
     Returns
     -------
@@ -126,7 +124,7 @@ def random_policy(_grid):
     Returns
     -------
     policy : ndarray(int, ndim=1)
-        random policy vector, of length n
+            random policy vector, of length n
     """
     new_grid = np.where(np.isnan(_grid), 0, _grid)
 

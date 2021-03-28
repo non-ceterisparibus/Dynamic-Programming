@@ -1,6 +1,3 @@
-"""
-
-"""
 import numpy as np
 
 def f(k, alpha):
@@ -29,9 +26,8 @@ def crra_dprime(c,sigma):
 
 def crra(c, sigma):
     """
-    Return the CRRA utility evaluation of *argument* where the Arrow-Pratt
-    coefficient of relative risk aversion takes on the value *exponent*.
-    Neither handle cases where *argument* is less than nor log utility.
+    Return the CRRA utility evaluation 
+
     Utility = (C^(1 - sigma) - 1)/(1 - sigma)
     """
 
@@ -44,8 +40,8 @@ def crra(c, sigma):
 def capital_ss(alpha, beta, delta):
     """
     Calculate the capital at the steady state for:
-    production function f = k^alpha 
-    and utility function    U = (c^(1 - sigma) - 1)/(1 - sigma)
+        production function f = k^alpha 
+        utility function    U = (c^(1 - sigma) - 1)/(1 - sigma)
     """
 
     return ( (1-beta+delta*beta) / (alpha * beta) )**(1/(alpha-1))
@@ -53,18 +49,15 @@ def capital_ss(alpha, beta, delta):
 def consumption_ss(capitals, alpha, delta):
     """
     Calculate the consumption at the steady state for:
-    production function f = k^alpha 
-    and utility function U = (c^(1 - sigma) - 1)/(1 - sigma)
+        production function f = k^alpha 
+        utility function U = (c^(1 - sigma) - 1)/(1 - sigma)
     """
 
     return capitals**alpha - delta*capitals
 
 def linearized_dynamic_system(alpha, beta, delta, sigma):
     """
-    the linearly approximated solution
-    just in case we later want to compare it to the non-linear policy functions obtained from dynamic programming
-    For the linearly approximated solution,
-    we need to get entries of the A matrix, using steady state values and corresponding derivatives.
+    Calculate the linearly approximated solution
 
     """
     capitals = capital_ss(alpha, beta, delta)

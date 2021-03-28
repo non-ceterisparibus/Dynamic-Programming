@@ -10,7 +10,7 @@ from codes.ddp_functions import linearized_dynamic_system
 @jit
 def consum_grid_mat(k_grid,alpha,delta):
     """
-
+    Calculate the consumption grid based on k_grid
     """
     k_state = np.matrix(k_grid)
     k_action = np.transpose(k_state)
@@ -21,8 +21,8 @@ def consum_grid_mat(k_grid,alpha,delta):
 
 def get_grid(dev, num_states, beta, alpha, delta, sigma):
     """
-    Get current-period utility payoff
-    implied by moving from some K_state (today) to some K_action (next period)
+    Create capital, consumption and utility grid 
+    by moving from some K_state (today) to some K_action (next period)
    
     """
     # Capitals at steady state
@@ -47,6 +47,7 @@ def get_grid(dev, num_states, beta, alpha, delta, sigma):
 
 def _consumption_linear_solution(k_grid, alpha, beta, delta, sigma):
     """
+    Calculate the solution of linearized system for consumption level
     """
     capitals, consumptions, A = linearized_dynamic_system(alpha, beta, delta, sigma)
 
@@ -58,23 +59,33 @@ def _consumption_linear_solution(k_grid, alpha, beta, delta, sigma):
 
     return C_lin
 
-def linear_solution(num_states, k_grid , T, alpha, beta, delta, sigma):
+def linear_solution( k_grid , T, alpha, beta, delta, sigma):
     """
-    Randomly choose a policy from plausible choices from grid world
-
+    Solve the linearized system to get the simulated captial and consumption level
 
     Parameters
     ----------
     T : time vector, of length n
-        
+
+    Returns
+    ----------
+    k_sim: array_like( 2-dimensional ndarray of shape (n, n))
+            Simulated capital stocks
+
+    c_sim:array_like( 2-dimensional ndarray of shape (n, n))
+            Simulated consumption levels
     """
+    num_states = len(k_grid)
+
     capitals, consumptions, A = linearized_dynamic_system(alpha, beta, delta, sigma)
 
+    # Eigenvalue and eigenvectors
     w, v = np.linalg.eig(A)
     stab_col_ind = np.where(w < 1)
-
+    # Stable choice
     stab_ind = (v[0,stab_col_ind]/v[1,stab_col_ind])
 
+    # Calculate solution for various beginning k_0 in K-grid
     k_sim = np.tile(np.nan, [num_states, T])        # capitals simulated
     c_sim = np.tile(np.nan, [num_states, T])        # consumptions simulated
     x_t = np.tile(np.nan, [2, T])                   # deviation of capital and consumption

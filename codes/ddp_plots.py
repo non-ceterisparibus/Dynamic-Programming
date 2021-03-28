@@ -2,12 +2,24 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import random
 
-def plot_dynamics(d1_grid, value, iter, lines, colormap):
+def _plot_dynamics(d1_grid, value_grid, iter, lines, colormap):
     """
+    Choosing randomly 
+
     Parameters
     ----------
     d1_grid : vector, of length n (ndim=1)
+            grid in the x axis
+
+    value_grid: array_like( 2-dimensional ndarray)
+            grid in the x axis
+
+    lines: interger
+            the number of lines will be plotted
     
+    Return
+    ---------
+    Plot
 
     """
     random.seed(3000)
@@ -26,13 +38,13 @@ def plot_dynamics(d1_grid, value, iter, lines, colormap):
     sm.set_array([])
 
     for j in range(lines+1):
-        y = value[iter_vector[j],:]
+        y = value_grid[iter_vector[j],:]
         plt.plot(x, y, linewidth=2, alpha=0.6, color=cmap(norm(iter_vector[j])), label=iter_vector[j])
 
-def plot_value_function(k_grid, val_store_iter, num_iter,lines):
+def plot_value_iteration(k_grid, val_store_iter, num_iter,lines):
     "Plot the value function "
 
-    plot_dynamics(k_grid, val_store_iter, num_iter, lines, colormap = 'Reds')
+    _plot_dynamics(k_grid, val_store_iter, num_iter, lines, colormap = 'Paired')
    
     plt.ylabel("Value function")
     plt.xlabel("Capital today")
@@ -42,18 +54,15 @@ def plot_value_function(k_grid, val_store_iter, num_iter,lines):
 def plot_transition_dynamics(T, k_sim, num_iter, lines):
     "Plot the transition dynamics of capital "
 
-    plot_dynamics(T, k_sim, num_iter, lines, colormap = "Purples")
+    _plot_dynamics(T, k_sim, num_iter, lines, colormap = "Purples")
    
     plt.ylabel("Capital stock, k_t")
     plt.xlabel("time, t")
 
-    plt.text(0.5, 0.5, '$k_{t+1} = g(k_t)$ from various $k_0$', 
-    horizontalalignment='center', verticalalignment='center'
-    )
     plt.show()
 
-def plot_policy_function(k_grid, val_store_iter, num_iter):
-    "Plot the value function "
+def plot_policy_iteration(k_grid, val_store_iter, num_iter):
+    "Plot the value function for policy iteration "
 
     #Iteration vector
     iter_vector = range(0,num_iter)
@@ -62,7 +71,7 @@ def plot_policy_function(k_grid, val_store_iter, num_iter):
     x = k_grid
     
     #Ploting
-    cmap = plt.cm.get_cmap("Reds")
+    cmap = plt.cm.get_cmap("Paired")
     norm = mpl.colors.SymLogNorm(2, vmin=iter_vector[0], vmax=iter_vector[-1])
 
     sm = mpl.cm.ScalarMappable(norm=norm, cmap=cmap)
@@ -82,6 +91,8 @@ def plot_policy_function(k_grid, val_store_iter, num_iter):
     
 def plot_capital_current_utility(u_grid, k_grid):
     """
+    plot two random utility lines in relation with capital stock k_t
+    and the choice of next capital stock k_t+1
 
     """
     num_states = len(k_grid)
@@ -105,7 +116,7 @@ def plot_capital_current_utility(u_grid, k_grid):
 
 def plot_bellman_equation(u_grid, k_grid, beta, value_store_iter_v, num_iter_v):
     """
-
+    Plot the total of the objective on the right-hand-side of Bellman equation
     """
     num_states = len(k_grid)
 
