@@ -1,4 +1,4 @@
-name: dsge
+name: ddp
 channels:
   - conda-forge
 
