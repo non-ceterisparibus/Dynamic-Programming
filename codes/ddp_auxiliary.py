@@ -2,9 +2,9 @@
 import numpy as np
 from numba import jit
 
-from ddp_functions import crra
-from ddp_functions import capital_ss
-from ddp_functions import linearized_dynamic_system
+from codes.ddp_functions import crra
+from codes.ddp_functions import capital_ss
+from codes.ddp_functions import linearized_dynamic_system
 
 
 @jit
