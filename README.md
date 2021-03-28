@@ -5,6 +5,13 @@
 In these notes, I will deal with a fundamental tool of dynamic macroeconomics: dynamic programming. Dynamic programming is a very convenient way of writing a large set of dynamic problems in economic analysis as most of the properties of this tool are now well established and understood.
 In order to understand the problem, I will ﬁrst solve deterministic inﬁnite-horizon Ramsey Model. 
 
+<a href="https://nbviewer.jupyter.org/github/Thu-Duong/Dynamic-Programming/blob/main/main_notebook.ipynb"
+   target="_parent">
+   <img align="center"
+  src="https://raw.githubusercontent.com/jupyter/design/master/logos/Badges/nbviewer_badge.png"
+      width="109" height="20">
+</a>
+
 ## References
 
 ### Books
