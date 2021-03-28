@@ -2,9 +2,8 @@
 
 
 ## Introduction about project
-In these notes, we will deal with a fundamental tool of dynamic macroeconomics: dynamic programming. Dynamic programming is a very convenient way of writing a large set of dynamic problems in economic analysis as most of the properties of this tool are now well established and understood.
+In these notes, I will deal with a fundamental tool of dynamic macroeconomics: dynamic programming. Dynamic programming is a very convenient way of writing a large set of dynamic problems in economic analysis as most of the properties of this tool are now well established and understood.
 In order to understand the problem, we will ﬁrst deal with deterministic dynamic programming models. 
-
 
 ## References
 
