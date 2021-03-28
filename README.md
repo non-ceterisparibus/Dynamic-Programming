@@ -12,6 +12,16 @@ In order to understand the problem, I will ﬁrst solve deterministic inﬁnite-
       width="109" height="20">
 </a>
 
+## Packages
+  - matplotlib
+  - scipy
+  - pandas
+  - pip
+  - numba
+  - numpy
+  - seaborn 
+  - pytest
+
 ## References
 
 ### Books
