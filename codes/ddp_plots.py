@@ -2,6 +2,28 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import random
 
+def plot_consumption_policy(c_policy,k_grid):
+
+    plt.subplots(figsize = (8, 8))
+    cmap = plt.cm.get_cmap("Paired")
+    norm = mpl.colors.SymLogNorm(2, vmin=0, vmax=3)
+    label = ["Value-iteration", "Policy-iteration", "Modified-policy-iteration", "Linearized-solution"]
+
+    sm = mpl.cm.ScalarMappable(norm=norm, cmap=cmap)
+    sm.set_array([])
+
+    x = k_grid
+    for i, row in enumerate(c_policy):
+        y = row
+        plt.plot(x, y, linewidth=4, alpha=0.6, color=cmap(norm(i)))
+
+    plt.ylabel("Consumption today")
+    plt.xlabel("Capital today")
+    plt.title("Consumption policy function")
+    plt.legend(labels =label)
+        
+    plt.show()
+
 def _plot_dynamics(d1_grid, value_grid, iter, nlines, colormap):
     """
     Choosing randomly n-lines in grid to plot
@@ -23,7 +45,7 @@ def _plot_dynamics(d1_grid, value_grid, iter, nlines, colormap):
 
     """
     random.seed(3000)
-    iter_vector = random.sample(range(0,iter-1), lines)
+    iter_vector = random.sample(range(0,iter-1), nlines)
     iter_vector.sort()
     iter_vector.append(iter-1)  # add last iteration
     

@@ -29,7 +29,10 @@ def crra(c, sigma):
     Return the CRRA utility evaluation 
 
     Utility = (C^(1 - sigma) - 1)/(1 - sigma)
+
     """
+
+    assert sigma != 1, "No provision made for log utility."
 
     numerator = c ** (1.0 - sigma)
     denominator = 1.0 - sigma

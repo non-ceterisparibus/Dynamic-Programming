@@ -27,6 +27,9 @@ In order to understand the problem, I will ﬁrst solve deterministic inﬁnite-
 ### Books
 
 * Linge, Svein, Langtangen, Hans Petter (2016). [*Programming for Computations - Python*](https://www.springer.com/gp/book/9783319812823#aboutAuthors). Springer International Publishing.
+* Richard Bellman. [Dynamic Programming](https://press.princeton.edu/books/paperback/9780691146683/dynamic-programming). Princeton University Press, 1957.
+* Kenneth L. Judd. [Numerical Methods in Economics](https://mitpress.mit.edu/books/numerical-methods-economics). Cambridge University Press, 1998.
+
 
 ### Papers
 * Heer Burkhard & Maußner Alfred, 2011. [Value Function Iteration as a Solution Method for the Ramsey Model](https://ideas.repec.org/a/jns/jbstat/v231y2011i4p494-515.html). Journal of Economics and Statistics (Jahrbuecher fuer Nationaloekonomie und Statistik), De Gruyter, vol. 231(4), pages 494-515, August.
@@ -36,4 +39,4 @@ Economic Applications](https://www.wiwi.uni-bonn.de/kuhn/notes/dpnotes.pdf).
 
 ### Lecture Notes
 * Chris Edmond (2019) [Macroeconomics (PhD core), 2019](http://www.chrisedmond.net/phd2019.html)
-* Thomas Hintermaier [Lectures in Macroeconomics (Master), 2019]
+* Thomas Hintermaier [Lecture in Macroeconomics (Master), 2019]

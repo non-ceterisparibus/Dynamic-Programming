@@ -177,7 +177,8 @@ def policy_iteration(max_iter, u_grid, beta):
 
     # set up
     value_store_iter = np.tile(np.nan, [max_iter, num_states])
-    store_policy = np.tile(np.nan, [max_iter, num_states])
+    #store_policy = np.tile(np.nan, [max_iter, num_states])
+    store_policy = np.zeros((max_iter, num_states), dtype= int)
 
     # Initialize with a random policy and initial value function
     policy = random_policy(u_grid)
@@ -219,7 +220,8 @@ def modified_policy_iteration(max_iter, u_grid, beta, crit, k):
 
     # Set up
     val_old, val_new = np.zeros(num_states), np.zeros(num_states)
-    store_policy = np.tile(np.nan, [max_iter, num_states])
+    #store_policy = np.tile(np.nan, [max_iter, num_states])
+    store_policy = np.zeros((max_iter, num_states), dtype= int)
     value_store_iter = np.tile(np.nan, [max_iter, num_states])
 
     # val_old = v_init
@@ -255,7 +257,7 @@ def modified_policy_iteration(max_iter, u_grid, beta, crit, k):
         store_policy[i,:] = improved_policy
         value_store_iter[i,:] = improved_value
 
-    num_iter = i
+    num_iter = i - 1
 
     return value_store_iter, store_policy, num_iter
 

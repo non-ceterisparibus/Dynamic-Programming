@@ -1,20 +1,32 @@
 
 import numpy as np
-from numba import jit
 
 from codes.ddp_functions import crra
 from codes.ddp_functions import capital_ss
 from codes.ddp_functions import linearized_dynamic_system
 
-@jit
-def consum_grid_mat(k_grid,alpha,delta):
+
+def consumption_grid_mat(k_grid,alpha,delta):
     """
-    Calculate the consumption grid based on k_grid
+    Calculate the consumption grid based on mp.matrix k_grid
     """
     k_state = np.matrix(k_grid)
     k_action = np.transpose(k_state)
     c = np.power(k_state, alpha) + (1 - delta)*k_state - k_action
     c_grid = np.asarray(c)
+    return c_grid
+
+def consumption_grid(k_grid,alpha,delta):
+    """
+    Calculate the consumption grid based on looping np.array k_grid
+    """
+    num_states = len(k_grid)
+    c_grid = np.tile(np.nan, [num_states, num_states])
+    for i, k_state in enumerate(k_grid):
+        for j, k_action in enumerate(k_grid):
+            c = np.power(k_state, alpha) + (1 - delta)*k_state - k_action
+    if c > 0:
+        c_grid[j, i] = c
     return c_grid
 
 
@@ -35,7 +47,7 @@ def get_grid(dev, num_states, beta, alpha, delta, sigma):
     k_grid = np.linspace(grid_min, grid_max, num_states)
     
     # Consumption grid
-    c_grid = consum_grid_mat(k_grid,alpha,delta)
+    c_grid = consumption_grid_mat(k_grid,alpha,delta)
     c_grid[c_grid < 0] = np.nan
 
     # Utility grid
@@ -43,7 +55,7 @@ def get_grid(dev, num_states, beta, alpha, delta, sigma):
 
     return k_grid, c_grid, u_grid
 
-def _consumption_linear_solution(k_grid, alpha, beta, delta, sigma):
+def consumption_linear_solution(k_grid, alpha, beta, delta, sigma):
     """
     Calculate the solution of linearized system for consumption level
     """
