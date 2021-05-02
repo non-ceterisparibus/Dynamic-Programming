@@ -1,4 +1,9 @@
-"""Solution algorithms"""
+"""
+Computational Discrete-state Dynamic Programming for the Simple Deterministic Problem
+
+Solution algorithms
+
+"""
 
 import numpy as np
 
