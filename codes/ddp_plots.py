@@ -6,7 +6,7 @@ def plot_consumption_policy(c_policy,k_grid):
 
     plt.subplots(figsize = (8, 8))
     cmap = plt.cm.get_cmap("Paired")
-    norm = mpl.colors.SymLogNorm(2, vmin=0, vmax=3)
+    norm = mpl.colors.Normalize(vmin=0, vmax=3)
     label = ["Value-iteration", "Policy-iteration", "Modified-policy-iteration", "Linearized-solution"]
 
     sm = mpl.cm.ScalarMappable(norm=norm, cmap=cmap)
@@ -44,6 +44,7 @@ def _plot_dynamics(d1_grid, value_grid, iter, nlines, colormap):
     Plot
 
     """
+    # Taking ramdom nlines in iter array
     random.seed(3000)
     iter_vector = random.sample(range(0,iter-1), nlines)
     iter_vector.sort()
@@ -54,7 +55,7 @@ def _plot_dynamics(d1_grid, value_grid, iter, nlines, colormap):
     
     #Ploting
     cmap = plt.cm.get_cmap(colormap)
-    norm = mpl.colors.SymLogNorm(2, vmin=iter_vector[0], vmax=iter_vector[-1])
+    norm = mpl.colors.Normalize(vmin=iter_vector[0], vmax=iter_vector[-1])
 
     sm = mpl.cm.ScalarMappable(norm=norm, cmap=cmap)
     sm.set_array([])
@@ -94,7 +95,7 @@ def plot_policy_iteration(k_grid, val_store_iter, num_iter):
     
     #Ploting
     cmap = plt.cm.get_cmap("Paired")
-    norm = mpl.colors.SymLogNorm(2, vmin=iter_vector[0], vmax=iter_vector[-1])
+    norm = mpl.colors.Normalize(vmin=iter_vector[0], vmax=iter_vector[-1])
 
     sm = mpl.cm.ScalarMappable(norm=norm, cmap=cmap)
     sm.set_array([])
