@@ -1,4 +1,4 @@
-name: ddp
+name: student_project
 channels:
   - conda-forge
 
