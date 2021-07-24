@@ -21,6 +21,6 @@ jobs:
       run: |
         export PATH="$PATH:/usr/share/miniconda/bin"
         conda info --envs
-        source .envrc
+        conda activate ddp
         jupyter nbconvert --to html --execute --ExecutePreprocessor.timeout=120 main_notebook.ipynb
       
