@@ -1,8 +1,6 @@
 name: ddp
 channels:
   - conda-forge
-  - defaults
-  - brown-data-science
 
 dependencies:
   - conda-build
@@ -11,7 +9,6 @@ dependencies:
   - matplotlib
   - scipy
   - pandas
-  - pip
   - numba
   - numpy
   - seaborn 
@@ -22,5 +19,7 @@ dependencies:
   - python-graphviz
 
   - virtualenv=20.0.33
+
+
 
 
