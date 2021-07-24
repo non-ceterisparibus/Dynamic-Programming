@@ -1,6 +1,8 @@
 name: ddp
 channels:
   - conda-forge
+  - defaults
+  - brown-data-science
 
 dependencies:
   - conda-build
