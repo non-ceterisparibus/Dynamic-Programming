@@ -42,7 +42,6 @@ def _plot_dynamics(d1_grid, value_grid, iter, nlines, colormap):
     Return
     ---------
     Plot
-
     """
     # Taking ramdom nlines in iter array
     random.seed(3000)

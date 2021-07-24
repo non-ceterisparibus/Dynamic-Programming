@@ -139,7 +139,7 @@ def random_policy(_grid):
 
     return policy
 
-def value_iteration(max_iter, u_grid, beta, crit):
+def value_iteration(crit, max_iter, u_grid, beta):
     """
     Solve the optimization problem by value iteration.
 
@@ -177,7 +177,6 @@ def policy_iteration(max_iter, u_grid, beta):
     matrix Q with zeros everywhere except for its row i and column j elements, which equal one
 
     """
-
     num_states = len(u_grid)
 
     # set up
@@ -210,7 +209,7 @@ def policy_iteration(max_iter, u_grid, beta):
 
     return value_store_iter, store_policy, num_iter
 
-def modified_policy_iteration(max_iter, u_grid, beta, crit, k):
+def modified_policy_iteration(crit, k, max_iter, u_grid, beta):
     """
     Solve the optimization problem by policy iteration
 
