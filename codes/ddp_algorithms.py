@@ -2,6 +2,7 @@
 Computational Discrete-state Dynamic Programming for the Simple Deterministic Problem
 
 Solution algorithms
+Source: [Value Function Iteration as a Solution Method for the Ramsey Model](https://ideas.repec.org/a/jns/jbstat/v231y2011i4p494-515.html)
 
 """
 
@@ -174,7 +175,7 @@ def policy_iteration(max_iter, u_grid, beta):
     """
     Solve the optimization problem by policy iteration
 
-    matrix Q with zeros everywhere except for its row i and column j elements, which equal one
+    Note: matrix Q with zeros everywhere except for its row i and column j elements, which equal one
 
     """
     num_states = len(u_grid)
@@ -224,11 +225,8 @@ def modified_policy_iteration(crit, k, max_iter, u_grid, beta):
 
     # Set up
     val_old, val_new = np.zeros(num_states), np.zeros(num_states)
-    #store_policy = np.tile(np.nan, [max_iter, num_states])
     store_policy = np.zeros((max_iter, num_states), dtype= int)
     value_store_iter = np.tile(np.nan, [max_iter, num_states])
-
-    # val_old = v_init
 
     for i in range(max_iter):
         # Policy improvement
