@@ -1,0 +1,8 @@
+# dark_background_style.mplstyle
+figure.facecolor: black
+axes.facecolor: black
+axes.edgecolor: white
+axes.labelcolor: white
+xtick.color: white
+ytick.color: white
+text.color: white
